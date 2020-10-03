@@ -1,22 +1,9 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React from "react"
 import CharacterItem from "./CharacterItem/CharacterItem"
 
 
-const Characters = () => {
-  const [items, setItems] = useState([])
-  const [loading, setLoading] = useState(true)
+const Characters = ({items, loading}) => {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(
-        `https://www.breakingbadapi.com/api/characters`
-      )
-      setItems(result.data)
-      setLoading(false)
-    }
-    fetchData()
-  }, [])
 
   return loading ? (
     <h1>chargement...</h1>
