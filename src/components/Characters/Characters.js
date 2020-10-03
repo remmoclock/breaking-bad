@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import CharacterItem from "./CharacterItem/CharacterItem"
+
 
 const Characters = () => {
   const [items, setItems] = useState([])
@@ -10,7 +12,6 @@ const Characters = () => {
       const result = await axios(
         `https://www.breakingbadapi.com/api/characters`
       )
-      console.log(result.data)
       setItems(result.data)
       setLoading(false)
     }
@@ -22,7 +23,7 @@ const Characters = () => {
   ) : (
     <section className="cards">
       {items.map((item) => (
-        <h1 key={item.char_id}>{item.name}</h1>
+        <CharacterItem key={item.char_id} item={item} />
       ))}
     </section>
   )
